@@ -1,7 +1,8 @@
 //Import any bower dependencies as so:
 @import 'bower_components/bskyb-skycons/src/styles/skycons';
 
-*[data-tooltip]{
+*[data-tooltip], //deprecate on version 1
+.tooltip{
   position:relative;
 }
 
@@ -52,7 +53,8 @@
   @include pointer($direction, $color, $size, true);
 }
 
-.tooltip-content {
+.tooltip-content , //deprecate on version 1
+.tooltip__content {
   @include pointer-bordered(top, #FFF, #CCC);
   transition: opacity 0.25s ease-in-out;
   box-shadow :2px 1px 3px rgba(0, 0, 0, 0.15);

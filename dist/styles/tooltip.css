@@ -235,10 +235,10 @@ body .hover-colour:hover .skycon-warning, body .colour.skycon-warning, body .sky
 body .hover-colour:hover .skycon-whatsapp, body .colour.skycon-whatsapp, body .skycon--hover:hover .skycon--whatsapp, body .skycon--whatsapp.skycon--active {
   color: #34AF23; }
 
-*[data-tooltip] {
+*[data-tooltip], .tooltip {
   position: relative; }
 
-.tooltip-content {
+.tooltip-content, .tooltip__content {
   -webkit-transition: opacity 0.25s ease-in-out;
           transition: opacity 0.25s ease-in-out;
   box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.15);
@@ -255,7 +255,7 @@ body .hover-colour:hover .skycon-whatsapp, body .colour.skycon-whatsapp, body .s
   border: 1px solid #dcdcdc;
   margin-top: 13px;
   cursor: default; }
-  .tooltip-content:before {
+  .tooltip-content:before, .tooltip__content:before {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -266,7 +266,7 @@ body .hover-colour:hover .skycon-whatsapp, body .colour.skycon-whatsapp, body .s
     border: 10px solid transparent;
     border-bottom-color: #CCC;
     z-index: 1; }
-  .tooltip-content:after {
+  .tooltip-content:after, .tooltip__content:after {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -277,15 +277,15 @@ body .hover-colour:hover .skycon-whatsapp, body .colour.skycon-whatsapp, body .s
     border: 9px solid transparent;
     border-bottom-color: #FFF;
     z-index: 2; }
-  .tooltip-content.fade {
+  .tooltip-content.fade, .tooltip__content.fade {
     opacity: 1; }
-  .tooltip-content.show {
+  .tooltip-content.show, .tooltip__content.show {
     display: block; }
-  .tooltip-content.top {
+  .tooltip-content.top, .tooltip__content.top {
     box-shadow: -2px -1px 3px rgba(0, 0, 0, 0.15);
     position: absolute;
     bottom: 1.8em; }
-    .tooltip-content.top:before {
+    .tooltip-content.top:before, .tooltip__content.top:before {
       content: "";
       position: absolute;
       top: 100%;
@@ -296,7 +296,7 @@ body .hover-colour:hover .skycon-whatsapp, body .colour.skycon-whatsapp, body .s
       border: 10px solid transparent;
       border-top-color: #CCC;
       z-index: 1; }
-    .tooltip-content.top:after {
+    .tooltip-content.top:after, .tooltip__content.top:after {
       content: "";
       position: absolute;
       top: 100%;
@@ -307,7 +307,7 @@ body .hover-colour:hover .skycon-whatsapp, body .colour.skycon-whatsapp, body .s
       border: 9px solid transparent;
       border-top-color: #FFF;
       z-index: 2; }
-    .tooltip-content.top:before, .tooltip-content.top:after {
+    .tooltip-content.top:before, .tooltip-content.top:after, .tooltip__content.top:before, .tooltip__content.top:after {
       left: 40px; }
-  .tooltip-content:before, .tooltip-content:after {
+  .tooltip-content:before, .tooltip-content:after, .tooltip__content:before, .tooltip__content:after {
     left: 40px; }

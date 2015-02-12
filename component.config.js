@@ -16,11 +16,11 @@ module.exports = {
     },
     release: { // or false. add you release config here.
         type: 'aws',
-        bucket: process.env.YOUR_AWS_BUCKET,
-        accessKey: process.env.YOUR_AWS_ACCESS_KEY_ID,
-        secret: process.env.YOUR_AWS_SECRET_ACCESS_KEY,
-        region: process.env.YOUR_AWS_REGION,
-        directoryPrefix: false //prefix your target release destination
+        bucket: process.env.AWS_SKYGLOBAL_BUCKET,
+        accessKey: process.env.AWS_ACCESS_KEY_ID,
+        secret: process.env.AWS_SECRET_ACCESS_KEY,
+        region: process.env.AWS_REGION,
+        directoryPrefix: 'components/'//prefix your target release destination
     },
     serve: {
         type:'static', // `static` or `node`

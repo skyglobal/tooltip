@@ -19,18 +19,10 @@ or alternatively, **Via Bower**
  * Include Sass: `@import 'bower_components/bskyb-tooltip/src/styles/tooltip';`
  * Include JS: `var tooltip = require('../../bower_components/bskyb-tooltip/src/scripts/tooltip');`
 
-
-#### Dependencies
-
-This component relies on other components and you must also include these in your project.
-
- * [Dependency Name](https://github.com/skyglobal/DependencyName)
-
 #### Developer Notes
 
-Choose a type of tooltip component and copy the relevant html.
- * [example](demo/_includes/example.html)
- * [example](demo/_includes/example.html),
+Required html for tooltip.
+ * [tooltip](demo/_includes/tooltip.html)
 
 ## Contribution
 

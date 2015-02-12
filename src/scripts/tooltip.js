@@ -2,23 +2,19 @@ var version  = require('./utils/version.js');
 var $ = require('../../bower_components/jquery/dist/jquery.js');
 var core = require('../../bower_components/bskyb-core/src/scripts/core');
 var detect = core.detect;
-
-
+var event = core.event;
 
 function bindEvents() {
-    ($(document)).on("mouseenter mouseleave", "[data-tooltip]", hover);
-
-    ($(document)).on("click", "[data-tooltip] .tooltip-content", preventClicksToParent);
-
-    ($(document)).on("touchstart", "[data-tooltip]", toggleTooltip);
+    event.live("mouseenter mouseleave", "[data-tooltip]", hover)
+    event.live("click", "[data-tooltip] .tooltip-content", preventClicksToParent)
+    event.live("touchstart", "[data-tooltip]", toggleTooltip)
 }
 
 function toggleTooltip(event) {
     event.preventDefault();
-
-    var $tooltipContent = $(this).find(".tooltip-content");
-
-    $(this).find(".tooltip-content").toggleClass('show fade');
+    var tooltip = this.querySelector(".tooltip-content") || this.querySelector(".tooltip__content");
+    tooltip.classList.toggle('show');
+    tooltip.classList.toggle('fades');
 }
 
 function preventClicksToParent(event) {
@@ -27,45 +23,52 @@ function preventClicksToParent(event) {
 }
 
 function hover(event) {
-    var $hoveredElement = $(this),
-        $tooltip = $hoveredElement.find('.tooltip-content');
-    clearTimeout($tooltip.attr('data-tooltip-entry-timeout'));
-    clearTimeout($tooltip.attr('data-tooltip-exit-timeout'));
+    //todo: remove reference to .tooltip-content n v1.0.0
+    var tooltip = this.querySelector(".tooltip-content") || this.querySelector(".tooltip__content");
+    if (!tooltip) return;
+    clearTimeout(tooltip.dataset['entry']);
+    clearTimeout(tooltip.dataset['exit']);
     if (event.type == 'mouseenter') {
-        if ($tooltip.text() !== "") {
-            show($tooltip);
+        if (tooltip.innerText !== "") {
+            show(tooltip);
         }
     } else {
-        hide($tooltip);
+        hide(tooltip);
     }
 }
 
-function position($tooltip) {
-    $tooltip.toggleClass("top", !detect.elementVisibleBottom($tooltip[0]));
+function position(tooltip) {
+    if (!detect.elementVisibleBottom(tooltip)){
+        tooltip.classList.add('top')
+    } else {
+        tooltip.classList.remove('top')
+    }
 }
 
-function show($tooltip) {
-    $tooltip.attr('data-tooltip-entry-timeout', setTimeout(function () {
-        $tooltip.addClass('show');
+function show(tooltip) {
+    var timeout = setTimeout(function () {
+        tooltip.classList.add('show');
         setTimeout(function() {
-            $tooltip.addClass('fade');
-            position($tooltip);
+            tooltip.classList.add('fade');
+            position(tooltip);
         }, 15);
-    }, 500));
+    }, 500);
+    tooltip.dataset['entry'] = timeout;
 }
 
-function hide($tooltip) {
-    var transitionDuration=250;
-    $tooltip.attr('data-tooltip-exit-timeout', setTimeout(function () {
-        $tooltip.removeClass('fade');
+function hide(tooltip) {
+    var timeout = setTimeout(function () {
+        tooltip.classList.remove('fade');
         setTimeout(function() {
-            $tooltip.removeClass('show top');
-        }, transitionDuration);
-    },300));
-
+            tooltip.classList.remove('show');
+            tooltip.classList.remove('top');
+        }, 250);
+    },300)
+    tooltip.dataset['exit'] = timeout;
 }
 
 bindEvents();
+
 
 module.exports = {
     version: version

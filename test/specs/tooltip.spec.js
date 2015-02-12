@@ -7,30 +7,32 @@ appendCSS({path: '_site/styles/tooltip.css'});
 
 var tooltip = skyComponents['tooltip'];
 var $ = require('../../bower_components/jquery/dist/jquery.js');
+var core = require('../../bower_components/bskyb-core/src/scripts/core');
+var event = core.event;
 
 describe('tooltip module can ', function () {
 
-
+    var demoTooltip = document.querySelector('#demo-tooltip')
     var describeSpec = 'Tooltip shows and disappears';
 
     describe(describeSpec, function () {
 
         it('Tooltip shows on mouse over', function (done) {
             expect($('#demo-tooltip .tooltip-content').is(":visible")).toBe(false);
-            $('#demo-tooltip').trigger('mouseenter');
+            event.trigger(demoTooltip, 'mouseenter');
             setTimeout(function() {
-                expect($('#demo-tooltip .tooltip-content').is(":visible")).toBe(true);
-                expect($('#demo-tooltip .tooltip-content').css('display')).toBe('block');
+                expect($('#demo-tooltip .tooltip__content').is(":visible")).toBe(true);
+                expect($('#demo-tooltip .tooltip__content').css('display')).toBe('block');
                 done();
             }, 600);
         });
 
         it('Tooltip disappears on mouse leave with a minimum visible time', function (done) {
-            $('#demo-tooltip').trigger('mouseenter');
+            event.trigger(demoTooltip, 'mouseenter');
             setTimeout(function() {
-                $('#demo-tooltip').trigger('mouseleave');
+                event.trigger(demoTooltip, 'mouseleave');
                 setTimeout(function() {
-                    expect($('#demo-tooltip .tooltip-content').is(":visible")).toBe(false);
+                    expect($('#demo-tooltip .tooltip__content').is(":visible")).toBe(false);
                     done();
                 }, 600);
             }, 600);
@@ -38,10 +40,10 @@ describe('tooltip module can ', function () {
 
         it('Tooltip shows on touch', function (done) {
             expect($('#demo-tooltip .tooltip-content').is(":visible")).toBe(false);
-            $('#demo-tooltip').trigger('touchstart');
+            event.trigger(demoTooltip, 'touchstart');
             setTimeout(function() {
-                expect($('#demo-tooltip .tooltip-content').is(":visible")).toBe(true);
-                expect($('#demo-tooltip .tooltip-content').css('display')).toBe('block');
+                expect($('#demo-tooltip .tooltip__content').is(":visible")).toBe(true);
+                expect($('#demo-tooltip .tooltip__content').css('display')).toBe('block');
                 done();
             }, 600);
         });
