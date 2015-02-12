@@ -9,8 +9,8 @@
 Include the tooltip assets in your project either as **Static Resources**
 
 ```html
-<link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/tooltip/0.0.1/styles/tooltip.min.css" />
-<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/tooltip/0.0.1/scripts/tooltip.min.js"></script>
+<link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/tooltip/0.1.0/styles/tooltip.min.css" />
+<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/tooltip/0.1.0/scripts/tooltip.min.js"></script>
 ```
 
 or alternatively, **Via Bower**
