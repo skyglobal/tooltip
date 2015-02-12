@@ -1,2 +1,95 @@
 //Import any bower dependencies as so:
-//@import 'bower_components/bskyb-core/src/styles/modules/colours';
+@import 'bower_components/bskyb-skycons/src/styles/skycons';
+
+*[data-tooltip]{
+  position:relative;
+}
+
+
+@mixin pointer($direction, $color, $size: 10px, $bordered: false) {
+  $middle-axis: top;
+  $opposite-direction: 'bottom';
+  @if  $direction == bottom {
+    $opposite-direction: 'top';
+  }
+  @if  $direction == left {
+    $opposite-direction: 'right';
+  }
+  @if  $direction == right {
+    $opposite-direction: 'left';
+  }
+  @if $direction == top or $direction == bottom {
+    $middle-axis: left;
+  }
+
+  $psuedo: before;
+  $offset: -$size;
+  $border-size: $size;
+  $z-index: 1;
+  @if $bordered {
+    $psuedo: after;
+    $offset: (-$size + 1px);
+    $border-size: ($size - 1px);
+    $z-index: 2;
+  }
+
+  &:#{$psuedo} {
+    content: "";
+    position: absolute;
+    #{$opposite-direction}: 100%;
+    #{$middle-axis}: 50%;
+    margin-#{$middle-axis}: $offset;
+    width: 0;
+    height: 0;
+    border: $border-size solid transparent;
+    border-#{$opposite-direction}-color: $color;
+    z-index: $z-index;
+  }
+}
+
+@mixin pointer-bordered($direction, $color, $border-color, $size: 10px) {
+  @include pointer($direction, $border-color, $size);
+  @include pointer($direction, $color, $size, true);
+}
+
+.tooltip-content {
+  @include pointer-bordered(top, #FFF, #CCC);
+  transition: opacity 0.25s ease-in-out;
+  box-shadow :2px 1px 3px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  display: none;
+  top: auto;
+  z-index: 1;
+  min-width: 210px;
+  max-width: 450px;
+  opacity: 0;
+  bottom: auto;
+  padding: 16px;
+  background-color: #FFF;
+  border: 1px solid #dcdcdc;
+  margin-top: 13px;
+  cursor: default;
+
+  &.fade {
+    opacity: 1;
+  }
+  &.show {
+    display: block;
+  }
+
+  &.top {
+    @include pointer-bordered(bottom, #FFF, #CCC);
+    box-shadow:-2px -1px 3px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    bottom: 1.8em;
+    &:before,
+    &:after {
+      left: 40px;
+    }
+  }
+
+  &:before,
+  &:after {
+    left: 40px;
+  }
+}

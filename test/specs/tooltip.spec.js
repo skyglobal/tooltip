@@ -6,13 +6,48 @@ appendCSS({path: '_site/styles/demo.css'});
 appendCSS({path: '_site/styles/tooltip.css'});
 
 var tooltip = skyComponents['tooltip'];
+var $ = require('../../bower_components/jquery/dist/jquery.js');
 
 describe('tooltip module can ', function () {
 
-    it('sum an array of numbers', function () {
 
-        expect(tooltip.sum([1,2,3])).toBe(6);
+    var describeSpec = 'Tooltip shows and disappears';
+
+    describe(describeSpec, function () {
+
+        it('Tooltip shows on mouse over', function (done) {
+            expect($('#demo-tooltip .tooltip-content').is(":visible")).toBe(false);
+            $('#demo-tooltip').trigger('mouseenter');
+            setTimeout(function() {
+                expect($('#demo-tooltip .tooltip-content').is(":visible")).toBe(true);
+                expect($('#demo-tooltip .tooltip-content').css('display')).toBe('block');
+                done();
+            }, 600);
+        });
+
+        it('Tooltip disappears on mouse leave with a minimum visible time', function (done) {
+            $('#demo-tooltip').trigger('mouseenter');
+            setTimeout(function() {
+                $('#demo-tooltip').trigger('mouseleave');
+                setTimeout(function() {
+                    expect($('#demo-tooltip .tooltip-content').is(":visible")).toBe(false);
+                    done();
+                }, 600);
+            }, 600);
+        });
+
+        it('Tooltip shows on touch', function (done) {
+            expect($('#demo-tooltip .tooltip-content').is(":visible")).toBe(false);
+            $('#demo-tooltip').trigger('touchstart');
+            setTimeout(function() {
+                expect($('#demo-tooltip .tooltip-content').is(":visible")).toBe(true);
+                expect($('#demo-tooltip .tooltip-content').css('display')).toBe('block');
+                done();
+            }, 600);
+        });
 
     });
+
+    return describeSpec;
 
 });
