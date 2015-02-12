@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--To put correct ie classes on document root to essentially enable css conditionals-->
+<!--[if IE 7]>         <html class="lt-ie10 lt-ie9 lt-ie8" > <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie10 lt-ie9" > <![endif]-->
+<!--[if IE 9]>         <html class="lt-ie10" > <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en" > <!--<![endif]-->
+<!--end css conditionals-->
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>tooltip</title>
+
+    <link rel="stylesheet" href="styles/demo.css"/>
+    <link rel="stylesheet" href="styles/tooltip.css"/>
+    <script type="text/javascript" src="scripts/tooltip.js"></script>
+</head>
+<body>
+
+<div class="demo-container">
+    <h1>tooltip
+        <small  class="demo-version text--secondary">v0.0.1
+            <a href="https://github.com/skyglobal/tooltip" class="text--secondary">
+                <span class="demo-icon demo-icon--github"  aria-hidden=true></span>
+                <span class="speak">Github Repo</span>
+            </a></small>
+    </h1>
+
+</div>
+
+
+
+
+<div class="demo-container">
+
+    <div id="demo-tooltip" data-tooltip>
+        <i class="skycon-info"></i><span>Hover</span>
+
+        <div class="tooltip-content">
+            <i class="skycon-remote-record colour"></i> <strong>Remote Record</strong>
+            <a href="http://www.google.com">Record Great Sky Content!</a>
+        </div>
+    </div>
+</div>
