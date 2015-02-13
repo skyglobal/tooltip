@@ -1,5 +1,4 @@
 var version  = require('./utils/version.js');
-var $ = require('../../bower_components/jquery/dist/jquery.js');
 var core = require('../../bower_components/bskyb-core/src/scripts/core');
 var detect = core.detect;
 var event = core.event;
@@ -14,7 +13,7 @@ function toggleTooltip(event) {
     event.preventDefault();
     var tooltip = this.querySelector(".tooltip-content") || this.querySelector(".tooltip__content");
     tooltip.classList.toggle('show');
-    tooltip.classList.toggle('fades');
+    tooltip.classList.toggle('fade');
 }
 
 function preventClicksToParent(event) {
