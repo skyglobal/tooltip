@@ -16,10 +16,10 @@ describe('tooltip module : ', function () {
     var demoTooltipContent = document.querySelector('#demo-tooltip .tooltip__content')
 
     it('Tooltip shows on mouse over', function (done) {
-        expect(demoTooltipContent.classList.contains('show')).toBe(false);
+        expect(demoTooltipContent.classList.contains('tooltip--show')).toBe(false);
         event.trigger(demoTooltip, 'mouseenter');
         setTimeout(function() {
-            expect(demoTooltipContent.classList.contains('show')).toBe(true);
+            expect(demoTooltipContent.classList.contains('tooltip--show')).toBe(true);
             expect(detect.css(demoTooltipContent,'display')).toBe('block');
             done();
         }, 600);
@@ -30,17 +30,17 @@ describe('tooltip module : ', function () {
         setTimeout(function() {
             event.trigger(demoTooltip, 'mouseleave');
             setTimeout(function() {
-                expect(demoTooltipContent.classList.contains('show')).toBe(false);
+                expect(demoTooltipContent.classList.contains('tooltip--show')).toBe(false);
                 done();
             }, 600);
         }, 600);
     });
 
     it('Tooltip shows on touch', function (done) {
-        expect(demoTooltipContent.classList.contains('show')).toBe(false);
+        expect(demoTooltipContent.classList.contains('tooltip--show')).toBe(false);
         event.trigger(demoTooltip, 'touchstart');
         setTimeout(function() {
-            expect(demoTooltipContent.classList.contains('show')).toBe(true);
+            expect(demoTooltipContent.classList.contains('tooltip--show')).toBe(true);
             expect(detect.css(demoTooltipContent,'display')).toBe('block');
             done();
         }, 600);
