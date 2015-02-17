@@ -277,37 +277,40 @@ body .hover-colour:hover .skycon-whatsapp, body .colour.skycon-whatsapp, body .s
     border: 9px solid transparent;
     border-bottom-color: #FFF;
     z-index: 2; }
-  .tooltip-content.fade, .tooltip__content.fade {
-    opacity: 1; }
-  .tooltip-content.show, .tooltip__content.show {
-    display: block; }
-  .tooltip-content.top, .tooltip__content.top {
-    box-shadow: -2px -1px 3px rgba(0, 0, 0, 0.15);
-    position: absolute;
-    bottom: 1.8em; }
-    .tooltip-content.top:before, .tooltip__content.top:before {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -10px;
-      width: 0;
-      height: 0;
-      border: 10px solid transparent;
-      border-top-color: #CCC;
-      z-index: 1; }
-    .tooltip-content.top:after, .tooltip__content.top:after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -9px;
-      width: 0;
-      height: 0;
-      border: 9px solid transparent;
-      border-top-color: #FFF;
-      z-index: 2; }
-    .tooltip-content.top:before, .tooltip-content.top:after, .tooltip__content.top:before, .tooltip__content.top:after {
-      left: 40px; }
   .tooltip-content:before, .tooltip-content:after, .tooltip__content:before, .tooltip__content:after {
     left: 40px; }
+
+.tooltip--top {
+  box-shadow: -2px -1px 3px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  bottom: 1.8em; }
+  .tooltip--top:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #CCC;
+    z-index: 1; }
+  .tooltip--top:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -9px;
+    width: 0;
+    height: 0;
+    border: 9px solid transparent;
+    border-top-color: #FFF;
+    z-index: 2; }
+  .tooltip--top:before, .tooltip--top:after {
+    left: 40px; }
+
+.tooltip--fade {
+  opacity: 1; }
+
+.tooltip--show {
+  display: block; }

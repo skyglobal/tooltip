@@ -14,43 +14,37 @@ describe('tooltip module : ', function () {
 
     var demoTooltip = document.querySelector('#demo-tooltip')
     var demoTooltipContent = document.querySelector('#demo-tooltip .tooltip__content')
-    var describeSpec = 'Tooltip shows and disappears';
 
-    describe(describeSpec, function () {
-
-        it('Tooltip shows on mouse over', function (done) {
-            expect(demoTooltipContent.classList.contains('show')).toBe(false);
-            event.trigger(demoTooltip, 'mouseenter');
-            setTimeout(function() {
-                expect(demoTooltipContent.classList.contains('show')).toBe(true);
-                expect(detect.css(demoTooltipContent,'display')).toBe('block');
-                done();
-            }, 600);
-        });
-
-        it('Tooltip disappears on mouse leave with a minimum visible time', function (done) {
-            event.trigger(demoTooltip, 'mouseenter');
-            setTimeout(function() {
-                event.trigger(demoTooltip, 'mouseleave');
-                setTimeout(function() {
-                    expect(demoTooltipContent.classList.contains('show')).toBe(false);
-                    done();
-                }, 600);
-            }, 600);
-        });
-
-        it('Tooltip shows on touch', function (done) {
-            expect(demoTooltipContent.classList.contains('show')).toBe(false);
-            event.trigger(demoTooltip, 'touchstart');
-            setTimeout(function() {
-                expect(demoTooltipContent.classList.contains('show')).toBe(true);
-                expect(detect.css(demoTooltipContent,'display')).toBe('block');
-                done();
-            }, 600);
-        });
-
+    it('Tooltip shows on mouse over', function (done) {
+        expect(demoTooltipContent.classList.contains('show')).toBe(false);
+        event.trigger(demoTooltip, 'mouseenter');
+        setTimeout(function() {
+            expect(demoTooltipContent.classList.contains('show')).toBe(true);
+            expect(detect.css(demoTooltipContent,'display')).toBe('block');
+            done();
+        }, 600);
     });
 
-    return describeSpec;
+    it('Tooltip disappears on mouse leave with a minimum visible time', function (done) {
+        event.trigger(demoTooltip, 'mouseenter');
+        setTimeout(function() {
+            event.trigger(demoTooltip, 'mouseleave');
+            setTimeout(function() {
+                expect(demoTooltipContent.classList.contains('show')).toBe(false);
+                done();
+            }, 600);
+        }, 600);
+    });
+
+    it('Tooltip shows on touch', function (done) {
+        expect(demoTooltipContent.classList.contains('show')).toBe(false);
+        event.trigger(demoTooltip, 'touchstart');
+        setTimeout(function() {
+            expect(demoTooltipContent.classList.contains('show')).toBe(true);
+            expect(detect.css(demoTooltipContent,'display')).toBe('block');
+            done();
+        }, 600);
+    });
+
 
 });

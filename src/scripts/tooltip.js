@@ -12,8 +12,8 @@ function bindEvents() {
 function toggleTooltip(event) {
     event.preventDefault();
     var tooltip = this.querySelector(".tooltip-content") || this.querySelector(".tooltip__content");
-    tooltip.classList.toggle('show');
-    tooltip.classList.toggle('fade');
+    tooltip.classList.toggle('tooltip--show');
+    tooltip.classList.toggle('tooltip--fade');
 }
 
 function preventClicksToParent(event) {
@@ -38,17 +38,17 @@ function hover(event) {
 
 function position(tooltip) {
     if (!detect.elementVisibleBottom(tooltip)){
-        tooltip.classList.add('top')
+        tooltip.classList.add('tooltip--top')
     } else {
-        tooltip.classList.remove('top')
+        tooltip.classList.remove('tooltip--top')
     }
 }
 
 function show(tooltip) {
     var timeout = setTimeout(function () {
-        tooltip.classList.add('show');
+        tooltip.classList.add('tooltip--show');
         setTimeout(function() {
-            tooltip.classList.add('fade');
+            tooltip.classList.add('tooltip--fade');
             position(tooltip);
         }, 15);
     }, 500);
@@ -57,10 +57,10 @@ function show(tooltip) {
 
 function hide(tooltip) {
     var timeout = setTimeout(function () {
-        tooltip.classList.remove('fade');
+        tooltip.classList.remove('tooltip--fade');
         setTimeout(function() {
-            tooltip.classList.remove('show');
-            tooltip.classList.remove('top');
+            tooltip.classList.remove('tooltip--show');
+            tooltip.classList.remove('tooltip--top');
         }, 250);
     },300)
     tooltip.dataset['exit'] = timeout;
